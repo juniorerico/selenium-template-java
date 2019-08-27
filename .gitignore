@@ -38,3 +38,4 @@ secrets.yml
 .gradletasknamecache
 .sts4-cache
 node_modules
+/test-output
