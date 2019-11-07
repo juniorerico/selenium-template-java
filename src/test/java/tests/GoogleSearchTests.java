@@ -29,8 +29,7 @@ public class GoogleSearchTests {
 		GoogleResultsPage googleResultsPage = googleHomePage.searchFor("Selenium with java");
 
 		assertTrue(googleResultsPage.getTitle().equals("Selenium with java - Pesquisa Google"));
-
-		assertTrue(googleResultsPage.isResultPresent("Selenium Tutorial - tutorialspoint"));
+		assertTrue(googleResultsPage.isResultPresent("Selenium Tutorial - javatpoint"));
 	}
 
 	@AfterSuite

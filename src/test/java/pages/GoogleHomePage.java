@@ -1,16 +1,12 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import factory.PageBase;
+import utils.SeleniumUtils;
 
 /**
- * Example of Page Object Model(POM) using Page Factory of the Google Home Page.
+ * Example of Page Object Model(POM of the Google home page.
  * 
  * @author ejunior
  *
@@ -18,11 +14,8 @@ import factory.PageBase;
 public class GoogleHomePage extends PageBase {
 	private WebDriver driver;
 	
-	@FindBy(how = How.NAME, using = "q")
-	private WebElement txtSearch;
-	
-	@FindBy(how = How.NAME, using = "btnK")
-	private WebElement btnSearch;
+	private String txtSearch = "//input[@name='q']";
+	private String btnSearch = "//input[@name='btnK']";
 
 	/**
 	 * Constructor of the page. Initialize the Page Factory objects. 
@@ -32,7 +25,6 @@ public class GoogleHomePage extends PageBase {
 	public GoogleHomePage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
-		PageFactory.initElements(driver, this);
 	}
 
 	/**
@@ -41,8 +33,8 @@ public class GoogleHomePage extends PageBase {
 	 * @param query
 	 */
 	public GoogleResultsPage searchFor(String query) {
-		txtSearch.sendKeys(query);
-		waitUntil(ExpectedConditions.elementToBeClickable(btnSearch)).click();
+		SeleniumUtils.waitForElement(driver, txtSearch).sendKeys(query);
+		SeleniumUtils.waitForElementToBeClickable(driver, btnSearch).click();
 		
 		return new GoogleResultsPage(driver);
 	}

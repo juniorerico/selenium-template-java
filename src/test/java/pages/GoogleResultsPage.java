@@ -5,12 +5,9 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import factory.PageBase;
+import utils.SeleniumUtils;
 
 /**
  * Example of Page Object Model(POM) using Page Factory of the Google Search
@@ -22,14 +19,10 @@ import factory.PageBase;
 public class GoogleResultsPage extends PageBase {
 	private WebDriver driver;
 
-	@FindBy(how = How.NAME, using = "q")
-	private WebElement txtSearch;
-
-	@FindBy(how = How.CSS, using = "[jsname='Tg7LZd']")
-	private WebElement btnSearch;
-
-	@FindBy(how = How.CLASS_NAME, using = "rc")
-	private List<WebElement> divResults;
+	private String txtSearch = "//input[@name='q']";
+	private String btnSearch = "//input[@jsname='Tg7LZd']";
+	private String divResults = "//div[contains(@class, 'rc')]";
+	private String linkResult = ".//div[contains(@class, 'r')]/a[1]";
 
 	/**
 	 * Constructor of the page. Initialize the Page Factory objects.
@@ -39,7 +32,6 @@ public class GoogleResultsPage extends PageBase {
 	public GoogleResultsPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
-		PageFactory.initElements(driver, this);
 	}
 
 	/**
@@ -48,16 +40,25 @@ public class GoogleResultsPage extends PageBase {
 	 * @param query
 	 */
 	public void searchFor(String query) {
-		txtSearch.sendKeys(query);
-		waitUntil(ExpectedConditions.elementToBeClickable(btnSearch)).click();
+		SeleniumUtils.waitForElement(driver, txtSearch).sendKeys(query);
+		SeleniumUtils.waitForElementToBeClickable(driver, btnSearch).click();
 	}
 
+	/**
+	 * Check if a result is present inside the page
+	 * 
+	 * @param resultTitle
+	 * @return
+	 */
 	public boolean isResultPresent(String resultTitle) {
-		for (WebElement result : divResults) {
-			WebElement title = result.findElement(By.cssSelector(".r .ellip"));
+		List<WebElement> results = getDivResults();
+		
+		for (WebElement result : results) {
+			// Get all the result titles
+			WebElement title = result.findElement(By.xpath(linkResult));
 			System.out.println(title.getText());
 
-			if (title.getText().equals(resultTitle))
+			if (title.getText().contains(resultTitle))
 				return true;
 		}
 
@@ -65,6 +66,6 @@ public class GoogleResultsPage extends PageBase {
 	}
 
 	public List<WebElement> getDivResults() {
-		return divResults;
+		return SeleniumUtils.waitForElements(driver, divResults);
 	}
 }
