@@ -18,7 +18,7 @@ import utils.SeleniumUtils;
  */
 public class GoogleResultsPage extends PageBase {
 	private WebDriver driver;
-
+	
 	private String txtSearch = "//input[@name='q']";
 	private String btnSearch = "//input[@jsname='Tg7LZd']";
 	private String divResults = "//div[contains(@class, 'rc')]";
@@ -54,8 +54,8 @@ public class GoogleResultsPage extends PageBase {
 		List<WebElement> results = getDivResults();
 		
 		for (WebElement result : results) {
-			// Get all the result titles
 			WebElement title = result.findElement(By.xpath(linkResult));
+			
 			System.out.println(title.getText());
 
 			if (title.getText().contains(resultTitle))
@@ -65,6 +65,11 @@ public class GoogleResultsPage extends PageBase {
 		return false;
 	}
 
+	/**
+	 * Get the results elements inside the page
+	 * 
+	 * @return
+	 */
 	public List<WebElement> getDivResults() {
 		return SeleniumUtils.waitForElements(driver, divResults);
 	}

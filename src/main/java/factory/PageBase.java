@@ -1,19 +1,17 @@
 package factory;
 
-import java.util.function.Function;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Class to be extended by all page objects
+ * Class to be extended by all Page Objects Model (POM) classes.
+ * 
+ * Contains common methods to be used by every page.
  * 
  * @author ejunior
  *
  */
 public class PageBase {
 	private WebDriver driver;
-	private final int DEFAULT_WAIT_TIME = 10;
 	
 	public PageBase (WebDriver driver) {
 		this.driver = driver;
@@ -26,27 +24,5 @@ public class PageBase {
 	 */
 	public String getTitle() {
 		return driver.getTitle();
-	}
-	
-	/**
-	 * Wait for a certain condition to occur for up to DEFAULT_WAIT_TIME
-	 * 
-	 * @param condition
-	 * @return
-	 */
-	public <T> T waitUntil(Function<? super WebDriver, T> condition) {
-		return waitUntil(condition, DEFAULT_WAIT_TIME);
-	}
-	
-	/**
-	 * Wait for a certain condition to occur for up to a given time
-	 * 
-	 * @param condition
-	 * @param waitTime
-	 * @return
-	 */
-	public <T> T waitUntil(Function<? super WebDriver, T> condition, int waitTime) {
-		WebDriverWait wait = new WebDriverWait(driver, waitTime);
-		return wait.until(condition);
 	}
 }

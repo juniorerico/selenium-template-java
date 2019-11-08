@@ -6,7 +6,9 @@ import factory.PageBase;
 import utils.SeleniumUtils;
 
 /**
- * Example of Page Object Model(POM of the Google home page.
+ * Example of Page Object Model (POM) of the Google home page.
+ * 
+ * All elements of the page that will be used must be instantiated with their respectives xpath. 
  * 
  * @author ejunior
  *
