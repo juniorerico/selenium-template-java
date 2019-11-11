@@ -1,6 +1,6 @@
 # selenium-template-java
 
-A Java implementation of a **Selenium Test Project** using the Factory Pattern to manage the WebDrivers, containing Utility Functions and using **TestNG** to execute the tests. This project intends to be in constant evolution and help other tester to create their own test framework using the best developing practices as possible. 
+A Java implementation of a **Selenium Project** using the Factory Pattern to manage the WebDrivers, containing Utility Functions and using **TestNG** to execute the tests. This project intends to be in constant evolution and help other tester to create their own test framework using the best developing practices as possible. 
 
 **Feel free to fork it and suggest any improvement!**
 
