@@ -1,6 +1,6 @@
 # selenium-template-java
 
-A Java implementation of a **Selenium Project** using the Factory Pattern to manage the WebDrivers, containing Utility Functions and using **TestNG** to execute the tests. This project intends to be in constant evolution and help other tester to create their own test framework using the best developing practices as possible. 
+A Java implementation of a **Selenium Project** using the developing Factory Pattern to manage the WebDrivers, containing Utility Functions and using **TestNG** to execute the tests. This project intends to be in constant evolution and help other tester to create their own test framework using the best developing practices as possible. 
 
 **Feel free to fork it and suggest any improvement!**
 
@@ -43,6 +43,16 @@ After implementing the initialize logic behind the scenes, in order to help us t
 WebDriver driver = BrowserProvider.createDriver(Browser.CHROME);
 ```
 
+
+## The Page Object Model (POM)
+
+**Page Object Model** is a design pattern which has become popular in test automation for enhancing test maintenance and reducing code duplication. A page object is an object-oriented class that serves as an interface to a page of the system under test.
+
+In this framework, **the Page Objects do not use the Page Factory** concept in order to let the project more flexible and also to avoid slowness.
+
+### Creating a Page Object
+
+All Page Object is class that extends the **PageBase** class. This class don't have much utility now, but let us add functionality in the future, if necessary.
 
 
 ### To be continued...
