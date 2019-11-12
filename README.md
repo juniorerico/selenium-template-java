@@ -52,7 +52,36 @@ In this framework, **the Page Objects do not use the Page Factory** concept in o
 
 ### Creating a Page Object
 
-All Page Object is class that extends the **PageBase** class. This class don't have much utility now, but let us add functionality in the future, if necessary.
+All Page Object is class that extends the **PageBase** class. This class don't have much utility now, but let us add functionalities in the future, if necessary.
+
+#### Declaring the Web Elements
+
+The elements of the Page Object are **Strings** containing their **xpath**. In order to keep everything organized and easy to read, the elements must be declared following the pattern bellow:
+
+Web Element Type|	Prefix|	Examples
+----------------|-------------|----------
+Text Box	|txt|	txtEmail , txtPassword
+Button|	btn|	btnRegister , btnLogin
+Drop down|	dd|	ddCountry , ddYear
+Select Drop Down|	sdd|	sddMonth , sddYear
+Check Box|	cb|	cbGender, cbSalaryRange
+Header|	hdr|	hdrPrint, hdrUser
+Table|	tbl|	tblBooks, tblProducts
+Label|	lbl|	lblUserName, lblPassword
+Image|	img|	imgProfile, imgCart
+
+#### Example
+
+```java
+public class GoogleHomePage extends PageBase {
+	private WebDriver driver;
+
+	private String txtSearch = "//input[@name='q']";
+	private String btnSearch = "//input[@name='btnK']";
+```
+
+#### Using the Web Elements
+
 
 
 ### To be continued...
