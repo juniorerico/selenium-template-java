@@ -85,30 +85,30 @@ public class GoogleHomePage extends PageBase {
 If we want to use the Web Elements out of the class or even inside of it, we must find them on the page. For this, we can create **get methods** for the elements we want to access. There are a bunch of **Utility Methods** to help us in this task, but it will be more explained later.
 
 ```java
-	/**
-	 * Get the WebElement of the 'txtSearch'.
-	 * 
-	 * @return
-	 */
-	public WebElement getTxtSearch() {
-		return SeleniumUtils.waitForElement(driver, txtSearch);
-	}
+/**
+ * Get the WebElement of the 'txtSearch'.
+ * 
+ * @return
+ */
+public WebElement getTxtSearch() {
+	return SeleniumUtils.waitForElement(driver, txtSearch);
+}
 ```
 
 It is common in some projects **do not give public access to the elements** in order to avoid messing the project, but **it depends on your purposes**. In some cases, it is better to **create methods to perform actions** inside the class, for example, if we need to search for something in google page, is much better call a method giving the query we want, instead of doing it outside of the class.
 
 ```java
 /**
-	 * Performs a simple google search and return the next page.
-	 * 
-	 * @param query
-	 */
-	public GoogleResultsPage searchFor(String query) {
-		SeleniumUtils.waitForElement(driver, txtSearch).sendKeys(query);
-		SeleniumUtils.waitForElementToBeClickable(driver, btnSearch).click();
-		
-		return new GoogleResultsPage(driver);
-	}
+ * Performs a simple google search and return the next page.
+ * 
+ * @param query
+ */
+public GoogleResultsPage searchFor(String query) {
+	SeleniumUtils.waitForElement(driver, txtSearch).sendKeys(query);
+	SeleniumUtils.waitForElementToBeClickable(driver, btnSearch).click();
+
+	return new GoogleResultsPage(driver);
+}
 ```
 
 ### To be continued...
