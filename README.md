@@ -111,4 +111,12 @@ public GoogleResultsPage searchFor(String query) {
 }
 ```
 
+## Utility Classes
+
+Utility Classes are very useful to provide reusable methods. The main utility class in this project is the **SeleniumUtils** one. This class intends to provide methods to help us to find elements, wait for certain conditions, manage checkboxes, radio buttons and more.
+
+
+
+
+
 ### To be continued...
