@@ -10,7 +10,7 @@
 		<selenium.version>3.141.59</selenium.version>
 		<webdrivermanager.version>3.6.2</webdrivermanager.version>
 		<testng.version>6.8.8</testng.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 	</properties>
 
 	<dependencies>
